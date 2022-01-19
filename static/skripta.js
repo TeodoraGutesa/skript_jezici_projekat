@@ -3,7 +3,7 @@ function init() {
     const cookies = document.cookie.split('=');
     const token = cookies[cookies.length - 1];
 
-
+/*
     document.getElementById('productBtn').addEventListener('click', e => {
         e.preventDefault();
         fetch('http://localhost:8000/admin/torte'
@@ -15,7 +15,16 @@ function init() {
                 window.location.href = 'torte.html';
             });
         });
-       
+ */
+
+        //novo 
+        document.getElementById('productBtn').addEventListener('click', e => {
+            document.cookie = `token=;SameSite=Lax`;
+            window.location.href = 'torte.html';
+        });
+        //novo
+
+        /*
         document.getElementById('productKolaciBtn').addEventListener('click', e => {
             e.preventDefault();
             fetch('http://localhost:8000/admin/kolaci'
@@ -27,6 +36,18 @@ function init() {
                 });
             });
 
+*/
+
+
+
+             //novo 
+        document.getElementById('productKolaciBtn').addEventListener('click', e => {
+            document.cookie = `token=;SameSite=Lax`;
+            window.location.href = 'kolaci.html';
+        });
+        //novo
+
+/*
 
             document.getElementById('mafiniBtn').addEventListener('click', e => {
                 e.preventDefault();
@@ -39,8 +60,10 @@ function init() {
                         window.location.href = 'mafini.html';
                     });
                 });
+*/
 
 
+/*
             document.getElementById('usersBtn').addEventListener('click', e => {
                 e.preventDefault();
                 fetch('http://localhost:8000/admin/users'
@@ -52,7 +75,23 @@ function init() {
                     });
                 });
 
+*/
 
+
+        //novo 
+        document.getElementById('usersBtn').addEventListener('click', e => {
+            document.cookie = `token=;SameSite=Lax`;
+            window.location.href = 'users.html';
+        });
+        //novo
+
+
+        //novo 
+        document.getElementById('mafiniBtn').addEventListener('click', e => {
+            document.cookie = `token=;SameSite=Lax`;
+            window.location.href = 'mafini.html';
+        });
+        //novo
 
         document.getElementById('pageBtn').addEventListener('click', e => {
             e.preventDefault();

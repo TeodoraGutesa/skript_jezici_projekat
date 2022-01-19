@@ -67,4 +67,30 @@ function init() {
             });
     });
 
+    document.getElementById('deleteBtn').addEventListener('click', e => {
+        e.preventDefault();
+
+    const data = {
+            id: document.getElementById('id').value,
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value,
+            admin: document.getElementById('admin').checked,
+            moderator: document.getElementById('moderator').checked
+    };
+        
+    fetch('http://localhost:8000/admin/users/'+id.value, {
+        method: 'DELETE', 
+        headers: { 'Content-Type': 'application/json'}       
+    })
+            
+        .then( res => res.json() )
+        .then( el => {
+                
+            document.cookie = `token=${el.token};SameSite=Lax`;
+            window.location.href = 'users.html';
+        });
+    }); 
+
+
 }

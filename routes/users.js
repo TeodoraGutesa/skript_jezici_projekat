@@ -24,10 +24,14 @@ function authToken(req, res, next){
 }
 
 route.get('/users', (req,res) => {
+
+   // const administrator = req.user.admin;
+   // const mod = req.user.moderator;
+    //if(req.body.name == "admin"){
     Users.findAll()
     .then(row => res.json(row))
     .catch(err => res.status(500).json(err));
- 
+   // }
 });
 
 route.get('/users/:id',(req,res)=>{
@@ -66,5 +70,5 @@ route.delete('/users/:id', (req,res) => {
 });
 
 
-route.use(authToken);
+//route.use(authToken);
 module.exports = route;
