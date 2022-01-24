@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang=en>
     <head>
-        <title>Kolaci</title>
+        <title>Mafini</title>
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,12 +9,44 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="mafini.js"></script>
+
+        <script>
+            function validateForm() {
+             let x = document.forms["myForm"]["naziv"].value;
+             if (x == "") {
+               alert("Name must be filled out");
+               return false;
+             }
+             let z = document.forms["myForm"]["cena"].value;
+              if (z == "") {
+                alert("Price must be filled out");
+                return false;
+              }
+            
+       }
+       function validateFormUpdate() {
+             let x = document.forms["myForm"]["naziv"].value;
+             if (x == "") {
+               alert("Name must be filled out");
+               return false;
+             }
+             let z = document.forms["myForm"]["cena"].value;
+              if (z == "") {
+                alert("Price must be filled out");
+                return false;
+              }
+
+
+            }
+           
+       </script>
+
     </head>
     <body onload="init()">
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <form method="post" action="/api/mafini">
+                    <form name="myForm" method="post" action="/api/mafini">
                         <div class="mb-3">
                             <label for="id" class="form-label">id</label>
                             <input type="text" class="form-control" id="id" name="id">
@@ -28,10 +60,11 @@
                             <input type="text" class="form-control" id="cena" name="cena" aria-describedby="cena">
                             <div id="cena" class="form-text">Unesite cenu proizvoda</div>
                         </div>
+                        <hr>
+                        <button type="product" class="btn btn-warning" id="addBtn" onclick="return validateForm()">Add</button>
+                        <button type="product" class="btn btn-warning" id="updateBtn"onclick="return validateFormUpdate()">Update</button>
+                        <button type="product" class="btn btn-warning" id="deleteBtn">Delete</button>
                     </form>    
-                    <button type="product" class="btn btn-warning" id="addBtn">Add</button>
-                    <button type="product" class="btn btn-warning" id="updateBtn">Update</button>
-                    <button type="product" class="btn btn-warning" id="deleteBtn">Delete</button>
                     <hr>
                         <div class="col-6">
                             <h2>Mafini:</h2>

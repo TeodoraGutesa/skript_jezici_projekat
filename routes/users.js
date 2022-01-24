@@ -1,7 +1,10 @@
 const { sequelize, Users,Torte,Kolaci,Mafini} = require('../models');
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
+const {userSchema} = require('../validation');
+
 
 const route = express.Router();
 route.use(express.json());
@@ -41,13 +44,23 @@ route.get('/users/:id',(req,res)=>{
 });
 
 route.post('/users',(req,res) =>{
+   /*
     Users.create({ name: req.body.name,email: req.body.email,password: req.body.password,moderator: req.body.moderator, admin:req.body.admin})
     .then(row => res.json(row))
     .catch( err => res.status(500).json(err));
-
+*/
+    userSchema.validateAsync(req.body).then(obj => {
+        obj = req.body;
+        obj.password = bcrypt.hashSync(req.body.password, 10);
+            Users.create(obj).then(row =>{
+                res.json(row);
+            }).catch(err => res.status(500).json(err));
+    
+        }).catch(err => res.status(600).json(err));
 });
 
 route.put('/users/:id',(req,res) =>{
+   /*
     Users.findOne({ where: {id: req.params.id}})
     .then(usr => {
         usr.name = req.body.name;
@@ -57,6 +70,30 @@ route.put('/users/:id',(req,res) =>{
         .then(row => res.json(row))
         .catch(err => res.status(500).json(err));
     })
+*/
+
+userSchema.validateAsync(req.body).then(obj => {
+    Users.findOne({ where: { id: req.params.id }})
+    .then(usr =>{
+        usr.name = req.body.name;
+        usr.email = req.body.email;
+        usr.password = bcrypt.hashSync(req.body.password, 10);
+        usr.admin = req.body.admin;
+        usr.moderator = req.body.moderator;
+        usr.save();
+        res.json(usr);
+    }).catch(err => {
+        res.status(500).json(err);
+        console.log("error 500 tebrice");
+    });
+}).catch(err => {
+    res.status(600).json(err);
+    console.log("error 600 tebrice");
+});
+
+   
+
+
 });
 
 route.delete('/users/:id', (req,res) => {

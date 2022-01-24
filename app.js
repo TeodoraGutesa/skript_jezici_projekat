@@ -2,22 +2,22 @@ const express = require('express');
 const app = express();
 
 const { sequelize } = require('./models');
-
+/*
 const apiRoutes = require('./routes/torte');
 const apiRoutes1 = require('./routes/kolaci');
 const apiRoutes2 = require('./routes/users');
 const apiRoutesMafini = require('./routes/mafini');
-
+*/
 const path = require('path');
 
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-
+/*
 app.use ('/admin',apiRoutes);
 app.use('/admin',apiRoutes1);
 app.use('/admin',apiRoutes2);
 app.use('/api',apiRoutesMafini);
-
+*/
 
 function getCookies(req) {
     if (req.headers.cookie == null) return {};

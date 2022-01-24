@@ -1,6 +1,6 @@
 const express = require('express');
 const { sequelize, Users } = require('./models');
-
+const {userSchema} = require('./validation');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
@@ -19,6 +19,7 @@ var corsOptions = {
 
 app.post('/register', (req, res) => {
 
+
     const obj = {
         name: req.body.name,
         email: req.body.email,
@@ -31,7 +32,10 @@ app.post('/register', (req, res) => {
         
         const usr = {
             userId: rows.id,
-            user: rows.name
+            user: rows.name,
+            user: rows.admin,
+            user: rows.moderator
+
         };
 
         const token = jwt.sign(usr, process.env.ACCESS_TOKEN_SECRET);
@@ -41,6 +45,7 @@ app.post('/register', (req, res) => {
         res.json({ token: token });
 
     }).catch( err => res.status(500).json(err) );
+    
 });
 
 app.post('/login', (req, res) => {

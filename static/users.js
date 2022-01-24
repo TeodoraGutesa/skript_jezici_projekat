@@ -4,7 +4,7 @@ function init() {
     const token = cookies[cookies.length - 1];
 
 
-    fetch('http://localhost:8000/admin/users', {
+    fetch('http://localhost:7000/admin/users', {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -31,7 +31,7 @@ function init() {
             moderator: document.getElementById('moderator').checked
         };
 
-        fetch('http://127.0.0.1:9000/register', {
+        fetch('http://localhost:7000/admin/users', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -55,7 +55,7 @@ function init() {
             moderator: document.getElementById('moderator').checked
         };
 
-        fetch('http://localhost:8000/admin/users/'+id.value, {
+        fetch('http://localhost:7000/admin/users/'+id.value, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
@@ -79,7 +79,7 @@ function init() {
             moderator: document.getElementById('moderator').checked
     };
         
-    fetch('http://localhost:8000/admin/users/'+id.value, {
+    fetch('http://localhost:7000/admin/users/'+id.value, {
         method: 'DELETE', 
         headers: { 'Content-Type': 'application/json'}       
     })

@@ -1,11 +1,10 @@
 function init(){
 
-    //novo
     const cookies = document.cookie.split('=');
     const token = cookies[cookies.length-1];
-    //novo
+    
 
-    fetch('http://localhost:8000/admin/torte', {
+    fetch('http://localhost:7000/admin/torte', {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -29,7 +28,7 @@ function init(){
             document.getElementById('naziv').value = '';
            
     
-            fetch('http://localhost:8000/admin/torte', {
+            fetch('http://localhost:7000/admin/torte', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -90,7 +89,7 @@ const data = {
    
 };
     
-fetch('http://localhost:8000/admin/torte/'+id.value, {
+fetch('http://localhost:7000/admin/torte/'+id.value, {
     method: 'DELETE', 
     headers: { 'Content-Type': 'application/json'}       
 })
@@ -116,7 +115,7 @@ fetch('http://localhost:8000/admin/torte/'+id.value, {
            // document.getElementById('id').value = '';
            // document.getElementById('naziv').value = '';
     
-            fetch('http://localhost:8000/admin/torte/'+id.value, {
+            fetch('http://localhost:7000/admin/torte/'+id.value, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

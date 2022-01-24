@@ -3,7 +3,7 @@ function init(){
     const cookies = document.cookie.split('=');
     const token = cookies[cookies.length-1];
 
-    fetch('http://localhost:8000/api/mafini', {
+    fetch('http://localhost:7000/api/mafini', {
         headers: {
             'Authorization': `Bearer ${token}`
         }
@@ -30,7 +30,7 @@ function init(){
             document.getElementById('naziv').value = '';
             document.getElementById('cena').value = '';
     
-            fetch('http://localhost:8000/api/mafini', {
+            fetch('http://localhost:7000/api/mafini', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ function init(){
                 cena: document.getElementById('cena').value
         };
             
-        fetch('http://localhost:8000/api/mafini/'+id.value, {
+        fetch('http://localhost:7000/api/mafini/'+id.value, {
             method: 'PUT', 
             headers: { 'Content-Type': 'application/json'},  
             body: JSON.stringify(data)     
@@ -81,7 +81,7 @@ function init(){
                 cena: document.getElementById('cena').value
         };
             
-        fetch('http://localhost:8000/api/mafini/'+id.value, {
+        fetch('http://localhost:7000/api/mafini/'+id.value, {
             method: 'DELETE', 
             headers: { 'Content-Type': 'application/json'}       
         })
