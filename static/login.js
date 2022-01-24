@@ -21,7 +21,7 @@ function init() {
                     alert(el.msg);
                 } else {
                     document.cookie = `token=${el.token};SameSite=Lax`;
-                    if(data.admin == '1'){
+                    if(data.name == 'admin'){
                         window.location.href = 'index.html'
                     }else{
                         window.location.href = 'moderatorIndex.html'

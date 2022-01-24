@@ -18,8 +18,21 @@ function init() {
         })
             .then( res => res.json() )
             .then( el => {
-                document.cookie = `token=${el.token};SameSite=Lax`;
-                window.location.href = 'index.html';
+                if (el.msg) {
+                    alert(el.msg);
+                } else {
+                    document.cookie = `token=${el.token};SameSite=Lax`;
+                    if(data.name == 'admin'){
+                        window.location.href = 'index.html'
+                    }else{
+                        window.location.href = 'moderatorIndex.html'
+                    }
+                    
+                   // window.location.href = 'index.html';
+                }
+            
+               // document.cookie = `token=${el.token};SameSite=Lax`;
+                //window.location.href = 'index.html';
             });
     });
 }
