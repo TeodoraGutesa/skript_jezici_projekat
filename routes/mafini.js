@@ -17,7 +17,7 @@ route.get('/mafini/:id',(req,res)=>{
     .then(row => res.json(row))
     .catch(err => res.status(500).json(err));
 });
-
+//komentar
 route.post('/mafini',(req,res) =>{
     /*
     Mafini.create({ naziv: req.body.naziv,cena: req.body.cena})

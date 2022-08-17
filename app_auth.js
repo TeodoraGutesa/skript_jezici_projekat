@@ -32,6 +32,7 @@ app.post('/register', (req, res) => {
         
         const usr = {
             userId: rows.id,
+            //potencijalni problem
             user: rows.name,
             user: rows.admin,
             user: rows.moderator
